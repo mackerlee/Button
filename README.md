@@ -50,6 +50,24 @@ android 44-45 lessones
           //--设置连接到MainActivity.java中自定义的按钮响应方法
           android:onClick="myOnClick"
           android:text="使用自定义方法的方式"/>
+      <Button
+        android:id="@+id/Button06"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Button06"
+        android:drawableLeft="@drawable/ic_android_16px"
+        //--设置透明按钮，?表示查找,在其后的android中查找，固定写法,如果没有查找到则按原来的样式显示
+        style="?android:attr/borderlessButtonStyle"   //按钮没有边框，透明的
+        android:text="透明样式的按钮"/>
+      <Button
+        android:id="@+id/Button07"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Button06"
+        //--绑定图片选择器
+        android:background="@drawable/button_custom"
+        android:text="自定义背景的按钮"/>  
+        
   </RelativeLayout>
 3.Button触发事件:5种触发方式，在app->java->包名->MainActivity.java中:
   package com.example.mackerlee.android_44;
@@ -125,4 +143,16 @@ android 44-45 lessones
       }
   }
 
-4.内部类在运行时会产生内存的额外开销，
+4.内部类在运行时会产生内存的额外开销，建议采用方式五自定义方式或方式二实现接口
+5.Nine-patch位图：在拉升时，该变的地方会变，不该变的也不会扭曲变形的图片.它仍然是一个png格式的图片，只不过是针对Android平台的                   可以指定图片特定位置拉伸和填充内容的一种特殊的png图片格式，通常用于按钮背景,设置按钮图片背景实例:
+  在res->drawable下创建图片选择器button_custom.xml,绑定按钮button07(上面activity_main.xml中定义)
+  <?xml version="1.0" encoding="utf-8"?>
+  <selector xmlns:android="http://schemas.android.com/apk/res/android">
+      //--以下三个选择用于选择显示按钮在不同状态下的显示图片
+      <item android:drawable="@drawable/button_pressed"     //按钮按下时显示
+          android:state_pressed="true" />
+      <item android:drawable="@drawable/button_focused"     //按钮获取到焦点时显示的图片
+          android:state_focused="true" />
+      <item android:drawable="@drawable/button_default" />  //按钮默认情况下显示的图片
+  </selector>
+
