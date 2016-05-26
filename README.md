@@ -190,5 +190,20 @@ android 47-48 lessones
           android:maxHeight="300dp"
           //--如果adjustViewBounds设置为true则以maxheight和maxwidth中最小值为准按比例缩放，如果adjustViewBounds为false则按原图显示
           android:adjustViewBounds="true"/>
+      <ImageView
+        android:id="@+id/imageview02"
+        android:layout_width="150dp"
+        android:layout_height="300dp"
+        android:layout_below="@id/imageview01"
+        android:src="@drawable/bb2"
+        android:scaleType="centerCrop"/>
+    <ImageButton //其设置样式/响应方式与Button一样
+        android:id="@+id/imagebutton01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageview02"
+        android:src="@drawable/ic_android"/>
   </RelativeLayout>
+
+4.ImageButton:图像按钮
 
