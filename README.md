@@ -155,4 +155,40 @@ android 44-45 lessones
           android:state_focused="true" />
       <item android:drawable="@drawable/button_default" />  //按钮默认情况下显示的图片
   </selector>
+  
+android 47-48 lessones
+1.ImageView组件:专门用于显示图片的组件,继承view，它可以加载图像从不同来源，负责计算图像的测量，这样它就可以用于任意布局管理                   器，并提供各种显示选项如缩放和上色.
+2.ImageView组件的XML属性:
+  --android:src：设置View的drawable图片位置;
+  --android:adjustViewBounds：是否保持宽高比,需要与maxWidth/MaxHigt一起使用，否则单独使用没有效果
+  --android:maxHight/maxWidth：设置View的最大值，单独使用无效,要和adjustViewBounds一起使用,如果想设置图片固定大小又要保持图                                片宽高比，需要如下设置：
+                                  设置setAdjustViewBounds为true
+                                  设置maxWidth/maxHeight值
+                                  设置layout_width和layout_height为wrap_content
+  --android:scaleType：设置图片的填充方式,用类该属性则adjustViewBounds/maxHight/maxWidth就不需要设置了，但将layout_width和layo                       ut_height为wrap_content设置成具体数值来配合使用，有以下几种方式：
+                      --matrix：用矩阵来绘图
+                      --fitXY：拉伸图片（不按比例）以填充View的宽高
+                      --fitStart：按比例拉伸，拉伸后图片的高度为View的高度，且显示在View的上边;
+                      --fitCenter：按比例拉伸，拉伸后图片的高度为View的高度，且显示在View的中间;
+                      --fitEnd：按比例拉伸，拉伸后图片的高度为View的高度，且显示在View的下边;
+                      --center：按原图大小显示图片, 但图片宽高大于View的宽高时，截取图片中间部分显示;
+                      --centerCrop：按比例缩放原图直到等于某个View的宽高显示,
+                      --centerInside：当原图宽高或等于View的宽高时,按原图大小剧中显示,反之将原图缩放至View的宽高居中显示
+                      
+3.ImageView实例：在res->layout->imageview_activity_main.xml中：
+  <?xml version="1.0" encoding="utf-8"?>
+  <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+  
+      <ImageView
+          android:id="@+id/imageview01"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:src="@drawable/bb1"
+          android:maxWidth="200dp"
+          android:maxHeight="300dp"
+          //--如果adjustViewBounds设置为true则以maxheight和maxwidth中最小值为准按比例缩放，如果adjustViewBounds为false则按原图显示
+          android:adjustViewBounds="true"/>
+  </RelativeLayout>
 
